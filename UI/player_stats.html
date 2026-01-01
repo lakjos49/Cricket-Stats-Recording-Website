@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Stats</title>
+    <style>
+        .tab { display: none; }
+        .tab-btn { padding: 10px; cursor: pointer; }
+    </style>
+
+    <script>
+        function showTab(fmt) {
+            document.querySelectorAll(".tab").forEach(t => t.style.display = "none");
+            document.getElementById(fmt).style.display = "block";
+        }
+    </script>
+</head>
+<body>
+
+<h2>🏏 {{ name }}</h2>
+<button class="tab-btn" onclick="showTab('Test')">Test</button>
+<button class="tab-btn" onclick="showTab('ODI')">ODI</button>
+<button class="tab-btn" onclick="showTab('T20')">T20</button>
+<button class="tab-btn" onclick="showTab('Total')">Total</button>
+
+
+{% for fmt, s in stats.items() %}
+<div class="tab" id="{{ fmt }}">
+
+<h3>{{ fmt }} Batting</h3>
+<table border="1">
+<tr>
+<th>Inns</th><th>NO</th><th>Runs</th><th>HS</th>
+<th>Ave</th><th>BF</th><th>SR</th>
+<th>100s</th><th>50s</th><th>4s</th><th>6s</th>
+</tr>
+<tr>
+<td>{{ s.inns }}</td>
+<td>{{ s.not_outs }}</td>
+<td>{{ s.runs }}</td>
+<td>{{ s.highest }}</td>
+<td>{{ s.average }}</td>
+<td>{{ s.balls }}</td>
+<td>{{ s.strike_rate }}</td>
+<td>{{ s.hundreds }}</td>
+<td>{{ s.fifties }}</td>
+<td>{{ s.fours }}</td>
+<td>{{ s.sixes }}</td>
+</tr>
+</table>
+
+<br>
+
+<h3>{{ fmt }} Bowling</h3>
+<table border="1">
+<tr>
+<th>Inns</th><th>Balls</th><th>Runs</th><th>Wkts</th>
+<th>BBI</th><th>Ave</th><th>Econ</th><th>SR</th>
+<th>4w</th><th>5w</th><th>10w</th>
+</tr>
+<tr>
+<td>{{ s.bowl_inns }}</td>
+<td>{{ s.balls_bowled }}</td>
+<td>{{ s.runs_conceded }}</td>
+<td>{{ s.wickets }}</td>
+<td>{{ s.best_bowling }}</td>
+<td>{{ s.bowling_avg }}</td>
+<td>{{ s.economy }}</td>
+<td>{{ s.bowling_sr }}</td>
+<td>{{ s.four_w }}</td>
+<td>{{ s.five_w }}</td>
+<td>{{ s.ten_w }}</td>
+</tr>
+</table>
+
+</div>
+{% endfor %}
+
+<script>
+    showTab("Total");
+</script>
+
+
+<br>
+<a href="/">⬅ Back to Home</a>
+
+</body>
+</html>

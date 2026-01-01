@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scorecard</title>
+</head>
+<body>
+
+<h2>Scorecard – Match {{ match_id }}</h2>
+
+<form method="post">
+    Format:
+    <select name="format">
+        <option>Test</option>
+        <option>ODI</option>
+        <option>T20</option>
+    </select><br><br>
+
+    Player Name: <input name="player" required><br><br>
+
+    Runs: <input name="runs" type="number" required><br><br>
+    Balls Faced: <input name="balls" type="number" required><br><br>
+    Not Out:
+    <select name="not_out">
+        <option value="0">Out</option>
+        <option value="1">Not Out</option>
+    </select><br><br>
+
+    Fours: <input name="fours" type="number" value="0"><br><br>
+    Sixes: <input name="sixes" type="number" value="0"><br><br>
+
+    Balls Bowled: <input name="balls_bowled" type="number" value="0"><br><br>
+    Runs Conceded: <input name="runs_conceded" type="number" value="0"><br><br>
+    Wickets Taken: <input name="wickets" type="number" value="0"><br><br>
+
+    <button type="submit">Add Entry</button>
+</form>
+
+<hr>
+
+<table border="1">
+<tr>
+    <th>Player</th>
+    <th>Runs</th>
+    <th>Balls</th>
+    <th>Wkts</th>
+    <th>Profile</th>
+</tr>
+
+{% for d in data %}
+<tr>
+    <td>{{ d.player }}</td>
+    <td>{{ d.runs }}</td>
+    <td>{{ d.balls }}</td>
+    <td>{{ d.wickets }}</td>
+    <td><a href="/player/{{ d.player }}">View</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
