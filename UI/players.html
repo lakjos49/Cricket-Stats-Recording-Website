@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Players</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>🏏 Player Directory</h1>
+</div>
+
+<div class="card">
+
+<form method="get" style="margin-bottom:20px;">
+    <input type="text" name="q" placeholder="Search player..."
+           value="{{ query }}" style="padding:10px;width:250px;">
+    <button class="btn">Search</button>
+    <a href="/add_player" class="btn">➕ Add Player</a>
+</form>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Team</th>
+    <th>Role</th>
+    <th>Profile</th>
+    <th>Edit</th>
+
+</tr>
+
+{% for p in players %}
+<tr>
+    <td>{{ p.name }}</td>
+    <td>{{ p.team }}</td>
+    <td>{{ p.role }}</td>
+    
+    <td>
+        <a class="btn" href="/player/{{ p.name }}">View</a>
+    </td>
+    <td>
+    <a class="btn" href="/edit_player/{{ p._id }}">Edit</a>
+</td>
+
+</tr>
+{% endfor %}
+</table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Player</title>
+</head>
+<body>
+
+<div class="header">
+    <h2>✏️ Edit Player</h2>
+</div>
+
+<div class="card">
+<form method="post">
+
+    <input name="name" value="{{ player.name }}" required>
+    <input name="team" value="{{ player.team }}" required>
+
+    <select name="role">
+        <option {{ 'selected' if player.role=='Batsman' }}>Batsman</option>
+        <option {{ 'selected' if player.role=='Bowler' }}>Bowler</option>
+        <option {{ 'selected' if player.role=='All-Rounder' }}>All-Rounder</option>
+        <option {{ 'selected' if player.role=='Wicket-Keeper' }}>Wicket-Keeper</option>
+    </select>
+
+    <select name="batting_style">
+        <option {{ 'selected' if player.batting_style=='Right-hand bat' }}>Right-hand bat</option>
+        <option {{ 'selected' if player.batting_style=='Left-hand bat' }}>Left-hand bat</option>
+    </select>
+
+    <select name="bowling_arm">
+        <option value="">-- Bowling Arm --</option>
+        <option {{ 'selected' if player.bowling_arm=='Right-arm' }}>Right-arm</option>
+        <option {{ 'selected' if player.bowling_arm=='Left-arm' }}>Left-arm</option>
+    </select>
+
+    <select name="bowling_style">
+        <option value="">-- Bowling Style --</option>
+
+        <optgroup label="Pace Bowling">
+            <option {{ 'selected' if player.bowling_style=='Fast' }}>Fast</option>
+            <option {{ 'selected' if player.bowling_style=='Fast-medium' }}>Fast-medium</option>
+            <option {{ 'selected' if player.bowling_style=='Medium-fast' }}>Medium-fast</option>
+            <option {{ 'selected' if player.bowling_style=='Medium' }}>Medium</option>
+        </optgroup>
+
+        <optgroup label="Spin Bowling">
+            <option {{ 'selected' if player.bowling_style=='Off spin' }}>Off spin</option>
+            <option {{ 'selected' if player.bowling_style=='Leg spin' }}>Leg spin</option>
+            <option {{ 'selected' if player.bowling_style=='Left-arm orthodox' }}>Left-arm orthodox</option>
+            <option {{ 'selected' if player.bowling_style=='Left-arm unorthodox' }}>Left-arm unorthodox</option>
+        </optgroup>
+    </select>
+
+    <button class="btn">✔ Update Player</button>
+</form>
+</div>
+
+</body>
+</html>

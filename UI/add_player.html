@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Player</title>
+  </head>
+  <body>
+    <div class="header">
+      <h2>➕ Add Player</h2>
+    </div>
+
+    <div class="card">
+      <form method="post">
+        <input name="player_id" placeholder="Player ID" required />
+        <input name="name" placeholder="Name" required />
+        <input name="team" placeholder="Team" required />
+
+        <!-- Role -->
+        <select name="role" required>
+          <option value="">-- Select Role --</option>
+          <option>Batsman</option>
+          <option>Bowler</option>
+          <option>All-Rounder</option>
+          <option>Wicket-Keeper</option>
+        </select>
+
+        <!-- Batting Style -->
+        <select name="batting_style" required>
+          <option value="">-- Select Batting Style --</option>
+          <option>Right-hand bat</option>
+          <option>Left-hand bat</option>
+        </select>
+
+        <!-- Bowling Arm -->
+        <select name="bowling_arm">
+          <option value="">-- Bowling Arm --</option>
+          <option>Right-arm</option>
+          <option>Left-arm</option>
+        </select>
+
+        <!-- Bowling Style -->
+        <select name="bowling_style">
+          <option value="">-- Bowling Style --</option>
+
+          <!-- Pace -->
+          <optgroup label="Pace Bowling">
+            <option value="Fast">Fast (145+ km/h)</option>
+            <option value="Fast-medium">Fast-medium (135–145 km/h)</option>
+            <option value="Medium-fast">Medium-fast (120–135 km/h)</option>
+            <option value="Medium">Medium (Below 120 km/h)</option>
+          </optgroup>
+
+          <!-- Spin -->
+          <optgroup label="Spin Bowling">
+            <option value="Off spin">Off spin</option>
+            <option value="Leg spin">Leg spin</option>
+          </optgroup>
+        </select>
+
+        <button class="btn">✔ Add Player</button>
+      </form>
+    </div>
+  </body>
+</html>
